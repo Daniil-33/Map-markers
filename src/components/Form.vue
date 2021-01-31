@@ -81,7 +81,6 @@ export default {
 
 					this.timelapsIterations.push(timeout);
 				}
-				//this.$store.dispatch('toogleTimelaps')
 			} else {
 				if(this.timelapsIterations.length) {
 					this.timelapsIterations.forEach(timeout => {
