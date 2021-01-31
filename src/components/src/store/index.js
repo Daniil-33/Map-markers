@@ -177,8 +177,7 @@ export default createStore({
         ]
       }
     ],
-    markers: [],
-    timelaps: false
+    markers: []
   },
   mutations: {
     addMarker(state, marker) {
@@ -186,9 +185,6 @@ export default createStore({
     },
     removeMarker(state, index) {
       state.markers.splice(index, 1);
-    },
-    toggleTimelaps(state) {
-      state.timelaps = !state.timelaps
     }
   },
   getters: {
@@ -206,9 +202,6 @@ export default createStore({
     },
     getMarkers(state) {
       return state.markers
-    },
-    getTimelaps(state) {
-      return state.timelaps
     }
   },
   actions: {
@@ -217,9 +210,6 @@ export default createStore({
     },
     removeMarker(context, index) {
       context.commit('removeMarker', index);
-    },
-    toggleTimelaps(context) {
-      context.commit('toggleTimelaps');
     }
   },
   modules: {

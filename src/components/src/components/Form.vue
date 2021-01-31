@@ -26,12 +26,9 @@ export default {
 	props: {
 		options: Array, // options to iterate in component
 		isBlock: Boolean, // property to define structure of form (inline or block)
-		valueToSet: String, // property to start timelaps
-		timelaps: Boolean // timelaps stste value
+		valueToSet: String, // property that determines what value this sets
+		timelaps: Boolean // property to start timelaps 
 	},
-	data: () => ({
-		timelapsIterations: []
-	}),
 	methods: {
 		// emitting data of selected value to parent component
 		selectOption(data, value) {
@@ -51,21 +48,17 @@ export default {
         	return optionsValues.indexOf(+val) !== -1;
       	}
       });
-  	},
+  	}
 	},
 	watch: {
 		// function to start  timelaps 
 		timelaps: function(val) {
-			 const radioButtons = this.getCurrentComponentRefs;
-			 const data = {
-					reiteration: radioButtons.length,
-					timelaps: val
-				};
-			// emitting count of iteration to parent component (same count of scrolls)
-			this.emitter.emit('timelapsAction', data);
-
 			if(val) {
+				const radioButtons = this.getCurrentComponentRefs;
 				let prevRadioButton = null;
+
+				// emitting count of iteration to parent component (same count of scrolls)
+				this.emitter.emit('startSlide', radioButtons.length);
 
 				for(let i = 0; i < radioButtons.length; i++) {
 					let input = radioButtons[i];
@@ -74,20 +67,13 @@ export default {
 						radioButtons[prevRadioButton].checked = false
 					}
 
-					let timeout = setTimeout(function() {
+					setTimeout(function() {
 						input.checked = true;
 						prevRadioButton = i;
-					}, 3000 * i + 1);
-
-					this.timelapsIterations.push(timeout);
+					}, 1000 * i + 1);
 				}
-				//this.$store.dispatch('toogleTimelaps')
-			} else {
-				if(this.timelapsIterations.length) {
-					this.timelapsIterations.forEach(timeout => {
-						clearInterval(timeout);
-					});
-				}
+				
+				this.$emit('finishTimelaps')
 			}
 		}
 	}

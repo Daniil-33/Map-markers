@@ -19,10 +19,6 @@
 <script>
 export default {
   name: 'Pagination',
-  data: () => ({
-    iterations: [],
-    reiterations: null
-  }),
   methods: {
     // method to scroll overflow conatiner
     slide(step, period) {
@@ -41,36 +37,19 @@ export default {
   },
   mounted() {
     // Listening the 'start of timelaps' for sync scroll
-    this.emitter.on('timelapsAction', (data) => {
-      this.reiterations = data.reiteration;
-
-      if(data.timelaps) {
-        this.slide(-10000, 10)
-        
-        for(let i = 0; i < this.reiterations; i++) {
-          let timeout;
-          if(i != 0){
-            // strat sliding after first iteration
-            timeout = setTimeout(() => {this.slide(60, 200)}, 3000 * i + 1);
-          } else {
-            timeout = setTimeout(() => {}, 3000 * i + 1);
-          }
-          this.iterations.push(timeout);
-        }
-      } else {
-        if(this.iterations.length) {
-          this.iterations.forEach(timeout => {
-            clearInterval(timeout);
-          });
-        }
+    this.emitter.on('startSlide', (reiteration) => {
+      this.slide(-10000, 10);
+      for(let i = 0; i < reiteration; i++) {
+        setTimeout(() => {this.slide(50, 200)}, 1000 * i + 1);
       }
-    });
+    })
   }
 }
 </script>
 <style>
   .pagination {
     overflow: hidden;
+
   }
   .pagination__prev {
     top: 50%;
