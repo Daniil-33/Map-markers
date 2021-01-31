@@ -1,15 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8d446103fc85ebb033b1",
+    "revision": "01a21470b654644a888d",
     "url": "/Map-markers/css/app.726b9acd.css"
   },
   {
-    "revision": "cc95e801f4ee4d6d59f2d8162d7a49d2",
+    "revision": "0980f13cef4f32f7bff5a0e6e84c9831",
     "url": "/Map-markers/index.html"
   },
   {
-    "revision": "8d446103fc85ebb033b1",
-    "url": "/Map-markers/js/app.1d45afbb.js"
+    "revision": "01a21470b654644a888d",
+    "url": "/Map-markers/js/app.6992e580.js"
   },
   {
     "revision": "9fca79600d00e17c6eba",
