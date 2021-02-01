@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/map/precache-manifest.3caf4a084b5f043aa700ea1c0bf3b12f.js"
+  "/Map-markers/precache-manifest.c03702e0e2367236410362295f95cd99.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "map"});
